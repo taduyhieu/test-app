@@ -9,9 +9,9 @@ const App = () => {
   const name = useRef("");
   const handleAdd = () => {
     const text = name.current.value;
-    console.log(text);
     if (text != "") {
-      setList([...list, { text: text }]);
+      setList([{ text: text }, ...list]);
+      name.current.value = "";
     } else {
       alert("Text is invalid");
     }
@@ -51,6 +51,20 @@ const App = () => {
               />
             ))}
         </ul>
+        {/* {list.length > 5 && ( */}
+        <div class="pagination">
+          <a href="#">&laquo;</a>
+          {[...Array(10x).keys()].map(function (item) {
+            return (
+              <a href="#" className={item == 2 ? "active" : ""}>
+                {item + 1}
+              </a>
+            );
+          })}
+
+          <a href="#">&raquo;</a>
+        </div>
+        {/* )} */}
       </main>
     </div>
   );
